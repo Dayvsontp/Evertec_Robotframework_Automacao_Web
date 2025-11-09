@@ -1,6 +1,7 @@
 *** Settings ***
 
 Resource    ${EXECDIR}/functions/Constants.resource
+
 *** Variables ***
 
 ${google}    https://www.google.com/
@@ -8,18 +9,12 @@ ${google}    https://www.google.com/
 *** Keywords ***
 
 Maximizar Tela
-    Maximize Browser Window
+    Maximize Browser Window 
 
 Abrir Navegador
-    [Arguments]    ${url}    ${browser}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    
-    # Adiciona argumentos obrigatórios para ambientes CI/CD
-    ${options.arguments}=    Create List    --headless=new    --no-sandbox    --disable-dev-shm-usage
-    
-    # Abre o navegador usando as opções
-    Open Browser    ${url}    ${browser}    options=${options}
-    Maximize Browser Window
+    [Arguments]    ${url}=${google}    ${navegador}=headlesschrome
+    Open Browser    ${url}    ${navegador}
+     Set Window Size    1920    1080
 
 Fechar Navegador
     Close Browser

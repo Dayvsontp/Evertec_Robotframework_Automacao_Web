@@ -4,7 +4,7 @@ Resource    ../resources/actions/ACESSAR_BLOG.resource
 Resource    ../resources/actions/CONSULTAR_EMPRESTIMO_CONSIGNADO.resource
 Resource    ../resources/actions/SELECIONAR_RESULTADO_DA_BUSCA.resource
 
-Test Setup       Abrir Navegador    ${google}    chrome
+Test Setup       Abrir Navegador
 Test Teardown    Fechar Navegador
 
 *** Test Cases ***

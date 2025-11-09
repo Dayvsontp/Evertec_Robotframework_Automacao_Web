@@ -52,6 +52,7 @@ jobs:
       # 👇 Armazena resultados do Allure para visualização posterior
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: allure-results
           path: allure-results/

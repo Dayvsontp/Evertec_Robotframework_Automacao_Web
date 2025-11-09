@@ -34,7 +34,7 @@ jobs:
         continue-on-error: false
         run: |
           mkdir -p allure-results # Garante que a pasta exista antes de rodar os testes
-          python -m robot --listener allure_robotframework scripts/
+          python -m robot --listener allure_robotframework:allure-results scripts/
           
 
 

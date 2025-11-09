@@ -1,10 +1,10 @@
 name: Run Robot Framework Tests with Allure
 
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  # push:
+  #   branches: [ master ]
+  # pull_request:
+  #   branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -25,6 +25,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install robotframework==7.3.2
           pip install robotframework-seleniumlibrary
+          pip install robotframework-requests
           pip install allure-robotframework
 
       # 👇 Aqui roda os testes Robot Framework

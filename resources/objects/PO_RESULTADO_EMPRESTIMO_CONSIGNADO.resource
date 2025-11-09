@@ -1,7 +1,7 @@
 *** Settings ***
 
-Resource    ../functions/Constants.resource
-Resource    ../functions/Utils.resource
+Resource    ${EXECDIR}/functions/Constants.resource
+Resource    ${EXECDIR}/functions/Utils.resource
 
 *** Variables ***
 

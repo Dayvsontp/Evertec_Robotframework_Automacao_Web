@@ -1,6 +1,6 @@
 *** Settings ***
 
-Resource    Constants.resource
+Resource    ${EXECDIR}/functions/Constants.resource
 *** Variables ***
 
 ${google}    https://www.google.com/

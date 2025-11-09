@@ -3,8 +3,8 @@ Documentation       *Action Name*: CONSULTAR_EMPRESTIMO_CONSIGNADO
 ...                 *Test Case*: Pesquisar por Emprestimo Consignado no blog do agi
 ...                 *Author*: Dayvson Tavares
 
-Resource    ../functions/Constants.resource
-resource    ../functions/Utils.resource
+Resource    ${EXECDIR}/functions/Constants.resource
+Resource    ${EXECDIR}/functions/Utils.resource
 Resource    ../objects/PO_PAGINA_PRINCIPAL.resource
 
 *** Variables ***

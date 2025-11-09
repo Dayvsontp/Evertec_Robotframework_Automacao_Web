@@ -3,8 +3,8 @@ Documentation       *Action Name*: Acessar Blog
 ...                 *Test Case*: Qualquer teste que necessite acessar o blog do agi
 ...                 *Author*: Dayvson Tavares
 
-Resource    ../functions/Constants.resource
-resource    ../functions/Utils.resource
+Resource    ${EXECDIR}/functions/Constants.resource
+resource    ${EXECDIR}/functions/Utils.resource
 Resource    ../objects/PO_PAGINA_PRINCIPAL.resource
 
 

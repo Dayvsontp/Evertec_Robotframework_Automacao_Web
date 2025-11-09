@@ -1,10 +1,10 @@
 name: Run Robot Framework Tests with Allure
 
 on:
-  # push:
-  #   branches: [ master ]
-  # pull_request:
-  #   branches: [ master ]
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
@@ -28,20 +28,17 @@ jobs:
           pip install robotframework-requests
           pip install allure-robotframework
 
-      # 👇 Corrigido: Agora o Robot Framework gera os resultados do Allure diretamente
+      
       - name: Run Robot Framework tests
-        # Usamos 'continue-on-error: true' para que as próximas etapas de upload rodem mesmo se os testes falharem
         continue-on-error: false
         run: |
           mkdir -p allure-results # Garante que a pasta exista antes de rodar os testes
           python -m robot --listener allure_robotframework:allure-results scripts/
           
 
-
-      # 👇 Armazena resultados do Allure para visualização posterior
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
-        if: always() # Isso garante que o upload tente ocorrer sempre
+        if: always()
         with:
           name: allure-results
           path: allure-results/

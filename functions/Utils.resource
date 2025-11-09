@@ -1,6 +1,6 @@
 *** Settings ***
 
-Resource    ../functions/Constants.resource
+Resource    Constants.resource
 *** Variables ***
 
 ${google}    https://www.google.com/

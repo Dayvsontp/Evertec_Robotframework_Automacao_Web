@@ -30,7 +30,7 @@ jobs:
       - name: Run Robot Framework tests
         run: |
           mkdir -p results
-          robot --outputdir results tests/
+          robot --outputdir results scripts/
 
       # 👇 Gera o relatório Allure
       - name: Generate Allure Report

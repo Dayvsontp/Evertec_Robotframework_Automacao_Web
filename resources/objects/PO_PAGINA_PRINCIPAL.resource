@@ -9,6 +9,7 @@ ${url}               https://blogdoagi.com.br/
 ${lupa}              //a[@aria-label='Search button'] 
 ${searchID}          //input[@type='search']
 ${SETA_CARROUSEL}    css:button[type='button'].slick-prev
+${MENU_PRODUTOS}     (//span[@class='menu-text'][normalize-space()='Produtos'])[1]
 
 *** Keywords ***
 
@@ -46,3 +47,12 @@ Pesquisar no blog
         Run Keyword If    ${tentativa} <= 3    Pesquisar no blog    ${termo}    ${tentativa}
         Run Keyword If    ${tentativa} > 3    Fail    Página não carregou após 3 tentativas
     END
+
+
+clicar no menu produtos
+    [Documentation]    Clicar no menu produtos do blog do agi
+    
+    ${texto_menu}    Get Text    ${MENU_PRODUTOS}
+    Click Element    ${MENU_PRODUTOS}
+   
+    

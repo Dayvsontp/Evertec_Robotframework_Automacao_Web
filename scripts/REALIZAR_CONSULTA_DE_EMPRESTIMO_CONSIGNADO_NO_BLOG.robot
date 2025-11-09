@@ -3,6 +3,7 @@
 Resource    ../resources/actions/ACESSAR_BLOG.resource
 Resource    ../resources/actions/CONSULTAR_EMPRESTIMO_CONSIGNADO.resource
 Resource    ../resources/actions/SELECIONAR_RESULTADO_DA_BUSCA.resource
+Resource    ../resources/objects/PO_PRODUTOS.resource
 
 Test Setup       Abrir Navegador
 Test Teardown    Fechar Navegador
@@ -28,4 +29,10 @@ Inscrever usuario na newsletter do blog do agi
     AND inscrever usuario na newsletter do blog do agi
     Then será validada a inscrição na newsletter
 
+Validar pagina produtos do blog do agi
+    [Documentation]    Cenário 03: Validar a página produtos do blog do agi
+    [Tags]    regressivo   CN03
 
+    Given que eu acesso o blog do agi
+    When clicar no menu produtos
+    Then será validado a pagina produtos

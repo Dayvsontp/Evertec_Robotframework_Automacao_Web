@@ -58,8 +58,8 @@ Espere o elemento estar visivel
     END
     
 que temos um usuario de e-mail válido  
-    ${palavra_aleatoria}  Generate Random String  length=4  chars=[LETTERS]
+    ${palavra_aleatoria}  Generate Random String  length=6  chars=[LETTERS]
     ${palavra_aleatoria}  Convert To Lower Case   ${palavra_aleatoria}
-    ${EMAIL_TESTE}          Set Variable              ${palavra_aleatoria}@emailteste.com
+    ${EMAIL_TESTE}          Set Variable              ${palavra_aleatoria}@hotmail.com
     Set Global Variable       ${EMAIL_TESTE}
     RETURN  ${EMAIL_TESTE}

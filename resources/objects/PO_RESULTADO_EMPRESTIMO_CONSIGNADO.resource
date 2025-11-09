@@ -5,7 +5,7 @@ Resource    ${EXECDIR}/functions/Utils.resource
 
 *** Variables ***
 
-${XPATH_PRIMEIRO_RESULTADO}         (//a[normalize-space()='Como reduzir parcela de Empréstimo Consignado?'])[1]
+${XPATH_PRIMEIRO_RESULTADO}         (//div[@class='post-content ast-width-md-6'])[1]
 ${TXT_LEI_EMPRESTIMO_CONSIGNADO}    css:#principais-pontos-da-lei-do-empréstimo-consignado
 ${footer}                           //p[normalize-space()='Copyright © 2025 Blog do Agi |']
 ${btn_inscrever_newsletter}        css:button[name="jetpack_subscriptions_widget"]
@@ -17,7 +17,7 @@ ${EMAIL_TESTE}
 
 Selecionar Primeiro Resultado Da Busca
     [Arguments]    ${XPATH_PRIMEIRO_RESULTADO}
-    [Documentation]    Selecionar o primeiro resultado da busca realizada sobre Emprestimo Consignado
+    [Documentation]    Selecionar o primeiro resultado da busca realizada sobre Seguros
 
     TRY
         Espere o elemento estar visivel    ${XPATH_PRIMEIRO_RESULTADO}    10s
@@ -62,7 +62,7 @@ será validada a inscrição na newsletter
         Log    Inscrição realizada com sucesso.
 
     ELSE
-    
+
         Fail    Falha na inscrição da newsletter.
         
     END

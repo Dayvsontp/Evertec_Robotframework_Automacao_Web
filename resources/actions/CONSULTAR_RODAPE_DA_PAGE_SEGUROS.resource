@@ -8,12 +8,12 @@ Resource    ${EXECDIR}/functions/Utils.resource
 Resource    ../objects/PO_PAGINA_PRINCIPAL.resource
 
 *** Variables ***
-${TERMO_EMPRESTIMO_CONSIGNADO}    Empréstimo Consignado
+${TERMO_SEGUROS}    Seguros
 
 *** Keywords ***
-realizar uma consulta sobre Emprestimo Consignado
+realizar uma consulta sobre Seguros
     [Documentation]    Realizar uma consulta sobre Emprestimo Consignado no blog do agi
     Espere o elemento estar visivel    ${lupa}    5s
-    Pesquisar no blog    ${TERMO_EMPRESTIMO_CONSIGNADO}
+    Pesquisar no blog    ${TERMO_SEGUROS}
     
    

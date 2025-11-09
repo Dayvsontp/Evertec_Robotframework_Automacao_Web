@@ -1,7 +1,7 @@
 *** Settings ***
 
 Resource    ../resources/actions/ACESSAR_BLOG.resource
-Resource    ../resources/actions/CONSULTAR_EMPRESTIMO_CONSIGNADO.resource
+Resource    ../resources/actions/CONSULTAR_RODAPE_DA_PAGE_SEGUROS.resource
 Resource    ../resources/actions/SELECIONAR_RESULTADO_DA_BUSCA.resource
 Resource    ../resources/objects/PO_PRODUTOS.resource
 
@@ -10,13 +10,12 @@ Test Teardown    Fechar Navegador
 
 *** Test Cases ***
 
-Realizar consulta de Emprestimo Consignado no blog do agi e validar o footer da pagina
-    [Documentation]    Cenário 01: Realizar uma consulta de Emprestimo Consignado no blog do agi
+Realizar consulta de Seguros no blog do agi e validar o footer da pagina
+    [Documentation]    Cenário 01: Realizar uma consulta de Seguros no blog do agi
     [Tags]    regressivo   CN01
 
     Given que eu acesso o blog do agi
-    When realizar uma consulta sobre Emprestimo Consignado
-    AND selecionar o resultado da busca
+    When realizar uma consulta sobre Seguros
     Then será validado o footer da pagina
         
 Inscrever usuario na newsletter do blog do agi
@@ -25,7 +24,7 @@ Inscrever usuario na newsletter do blog do agi
 
     Given que temos um usuario de e-mail válido
     AND que eu acesso o blog do agi
-    When realizar uma consulta sobre Emprestimo Consignado
+    When realizar uma consulta sobre Seguros
     AND inscrever usuario na newsletter do blog do agi
     Then será validada a inscrição na newsletter
 

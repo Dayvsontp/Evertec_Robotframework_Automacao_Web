@@ -9,12 +9,17 @@ ${google}    https://www.google.com/
 *** Keywords ***
 
 Maximizar Tela
-    Maximize Browser Window 
+    Set Window Size    1920    1080
+
+Limpar Cache E Cookies
+    Delete All Cookies
+    Execute JavaScript    window.caches.keys().then(keys => {keys.forEach(key => caches.delete(key));});
 
 Abrir Navegador
     [Arguments]    ${url}=${google}    ${navegador}=headlesschrome
-    Open Browser    ${url}    ${navegador}
-     Set Window Size    1920    1080
+    Open Browser    ${url}    ${navegador}  
+    Limpar Cache E Cookies  
+    Maximizar Tela
 
 Fechar Navegador
     Close Browser
@@ -42,9 +47,10 @@ Rolar Até Elemento Carregar
     Fail    Elemento ${localizador} não carregado após ${max_tentativas} rolagens.
 
 Espere o elemento estar visivel
-    [Arguments]    ${localizador}    ${timeout}=10s
+    [Arguments]    ${localizador}    ${timeout}
     TRY
-        
+        Press Keys    None    CTRL+SHIFT+R 
+        Sleep    3s
         Wait Until Element Is Visible    ${localizador}    ${timeout}
     EXCEPT
         Log    Elemento ${localizador} não visível após ${timeout}.

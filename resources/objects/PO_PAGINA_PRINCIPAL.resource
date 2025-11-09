@@ -27,7 +27,7 @@ Pesquisar no blog
 
     Press Keys    xpath=//body    DOWN
 
-    ${VISIVEL}    Run Keyword And Return Status    Espere o elemento estar visivel    ${SETA_CARROUSEL}    5s
+    ${VISIVEL}    Run Keyword And Return Status    Espere o elemento estar visivel    ${MENU_PRODUTOS}    5s
 
     IF    ${VISIVEL}
         Execute Javascript    document.querySelector('a[aria-label="Search button"]').click()

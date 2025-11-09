@@ -13,7 +13,8 @@ Resource    ../objects/PO_RESULTADO_EMPRESTIMO_CONSIGNADO.resource
 selecionar o resultado da busca
     [Documentation]    Selecionar o primeiro resultado da busca realizada sobre Emprestimo Consignado
 
-    Espere o elemento estar visivel    ${XPATH_PRIMEIRO_RESULTADO}    30s
+    
+    Espere o elemento estar visivel    ${XPATH_PRIMEIRO_RESULTADO}    20s
     Capture Page Screenshot
     Selecionar Primeiro Resultado Da Busca    ${XPATH_PRIMEIRO_RESULTADO}
     

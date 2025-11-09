@@ -31,22 +31,12 @@ jobs:
       # 👇 Corrigido: Agora o Robot Framework gera os resultados do Allure diretamente
       - name: Run Robot Framework tests
         # Usamos 'continue-on-error: true' para que as próximas etapas de upload rodem mesmo se os testes falharem
-        continue-on-error: true
+        continue-on-error: false
         run: |
           mkdir -p allure-results # Garante que a pasta exista antes de rodar os testes
-          # O comando principal agora usa o listener do Allure para gerar os arquivos JSON
-          robot --listener allure_robotframework.AllureListener scripts/
-          # Você pode adicionar --outputdir results aqui se ainda quiser os relatórios HTML/XML padrão
+          robot --listener allure_robotframework scripts/
+          
 
-      # 👇 Esta etapa de cópia não é mais necessária, a execução acima já gerou na pasta allure-results/
-
-      # 👇 Armazena evidências e relatórios (apenas se quiser os relatórios HTML/XML padrão)
-      # - name: Upload Robot Results
-      #   uses: actions/upload-artifact@v4
-      #   if: always()
-      #   with:
-      #     name: robot-results
-      #     path: results/
 
       # 👇 Armazena resultados do Allure para visualização posterior
       - name: Upload Allure Results

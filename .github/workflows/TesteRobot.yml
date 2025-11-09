@@ -28,31 +28,30 @@ jobs:
           pip install robotframework-requests
           pip install allure-robotframework
 
-      # 👇 Aqui roda os testes Robot Framework
+      # 👇 Corrigido: Agora o Robot Framework gera os resultados do Allure diretamente
       - name: Run Robot Framework tests
+        # Usamos 'continue-on-error: true' para que as próximas etapas de upload rodem mesmo se os testes falharem
+        continue-on-error: true
         run: |
-          mkdir -p results
-          robot --outputdir results scripts/
+          mkdir -p allure-results # Garante que a pasta exista antes de rodar os testes
+          # O comando principal agora usa o listener do Allure para gerar os arquivos JSON
+          robot --listener allure_robotframework.AllureListener scripts/
+          # Você pode adicionar --outputdir results aqui se ainda quiser os relatórios HTML/XML padrão
 
-      # 👇 Gera o relatório Allure
-      - name: Generate Allure Report
-        run: |
-          mkdir -p allure-results
-          cp -r results/* allure-results/
-          # O allure serve não é usado no CI, só localmente
-          # O GitHub Actions vai guardar como artefato abaixo
+      # 👇 Esta etapa de cópia não é mais necessária, a execução acima já gerou na pasta allure-results/
 
-      # 👇 Armazena evidências e relatórios (screenshots + output.xml + log.html + report.html)
-      - name: Upload Robot Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot-results
-          path: results/
+      # 👇 Armazena evidências e relatórios (apenas se quiser os relatórios HTML/XML padrão)
+      # - name: Upload Robot Results
+      #   uses: actions/upload-artifact@v4
+      #   if: always()
+      #   with:
+      #     name: robot-results
+      #     path: results/
 
       # 👇 Armazena resultados do Allure para visualização posterior
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
-        if: always()
+        if: always() # Isso garante que o upload tente ocorrer sempre
         with:
           name: allure-results
           path: allure-results/

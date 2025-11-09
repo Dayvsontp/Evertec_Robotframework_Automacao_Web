@@ -11,9 +11,15 @@ Maximizar Tela
     Maximize Browser Window
 
 Abrir Navegador
-    [Arguments]    ${google}    ${browser}=chrome
-    Open Browser    ${google}    ${browser}
-    Maximizar Tela
+    [Arguments]    ${url}    ${browser}
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    
+    # Adiciona argumentos obrigatórios para ambientes CI/CD
+    ${options.arguments}=    Create List    --headless=new    --no-sandbox    --disable-dev-shm-usage
+    
+    # Abre o navegador usando as opções
+    Open Browser    ${url}    ${browser}    options=${options}
+    Maximize Browser Window
 
 Fechar Navegador
     Close Browser

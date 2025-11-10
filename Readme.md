@@ -6,6 +6,7 @@ Repositório do projeto de testes automatizados Web do blog do Agi " https://blo
 
 ## 💻 Tecnologias e Requisitos
 - VScode
+- Windows/Linux
 - Robotframework 7.3.2
 - Python 3.11.9
 - Allure 2.35.1

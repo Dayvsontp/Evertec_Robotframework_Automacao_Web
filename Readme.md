@@ -23,7 +23,7 @@ pip install -r requirements.txt
 Existem três gatilhos no arquivo TestRobot.yml, onde pode disparar com ou sem alterações no projeto
 ```
 
-3. Executar ver o relatório dos testes
+3. Visualizar o relatório dos testes
 ```
 Após realizar a execução no github action, é criado uma pasta temporaria allure-results e será
 criado um arquivo .zip com o artefato para consulta no allure.

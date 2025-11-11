@@ -25,11 +25,11 @@ Existem três gatilhos no arquivo TestRobot.yml, onde pode disparar com ou sem a
 ```
 Execuçao local
 ```
-robot nome_do_arquivo.robot
+robot REALIZAR_CONSULTA_DE_SEGUROS_NO_BLOG.robot
 ```
 
 3. Visualizar o relatório dos testes
-```
+
 Após realizar a execução no github action, é criado uma pasta temporaria allure-results e será
 criado um arquivo .zip com o artefato para consulta no allure.
 
@@ -44,6 +44,5 @@ OBS: é necessario realizar a instalação do allure na maquina local, pois na C
 e ai dando o comando "allure serve ." dentro da pasta que foi extraido o arquivo .zip é possivel visuali-
 zar os resultados dos testes e o tratamento de erro feito em caso de instabilidade do sistema
 
-```
 
 <hr>

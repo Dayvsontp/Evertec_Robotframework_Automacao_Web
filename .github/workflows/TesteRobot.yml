@@ -26,6 +26,7 @@ jobs:
           pip install robotframework==7.3.2
           pip install robotframework-seleniumlibrary
           pip install robotframework-requests
+          pip install robotframework-faker
           pip install allure-robotframework
 
       

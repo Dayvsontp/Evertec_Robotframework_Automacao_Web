@@ -6,6 +6,7 @@ Resource    ${EXECDIR}/functions/Constants.resource
 
 ${google}    https://www.google.com/
 
+
 *** Keywords ***
 
 Maximizar Tela
@@ -56,10 +57,14 @@ Espere o elemento estar visivel
         Log    Elemento ${localizador} não visível após ${timeout}.
         Fail    Pagina apresentou instabilidade e não carregou o elemento ${localizador} após ${timeout}.
     END
+
+
+que temos um usuario de e-mail válido
     
-que temos um usuario de e-mail válido  
-    ${palavra_aleatoria}  Generate Random String  length=6  chars=[LETTERS]
-    ${palavra_aleatoria}  Convert To Lower Case   ${palavra_aleatoria}
-    ${EMAIL_TESTE}          Set Variable              ${palavra_aleatoria}@hotmail.com
+    ${nome}         FakerLibrary.First Name
+    ${sobrenome}    FakerLibrary.Last Name
+    ${usuario}      Set Variable    ${nome.lower()}.${sobrenome.lower()}
+    Set Global Variable  ${usuario}
+    ${EMAIL_TESTE}          Set Variable             ${usuario}@hotmail.com
     Set Global Variable       ${EMAIL_TESTE}
     RETURN  ${EMAIL_TESTE}

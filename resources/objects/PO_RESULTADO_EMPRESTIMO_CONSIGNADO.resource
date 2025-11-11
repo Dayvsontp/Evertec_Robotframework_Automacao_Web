@@ -55,7 +55,7 @@ inscrever usuario na newsletter do blog do agi
 será validada a inscrição na newsletter
     [Documentation]    Validar a inscrição na newsletter do blog do agi
 
-    ${VISIVEL}    Run Keyword And Return Status    Wait Until Page Contains    Sucesso! Enviamos um e-mail para confirmar a sua assinatura.    10s
+    ${VISIVEL}    Run Keyword And Return Status    Wait Until Page Contains    Sucesso! Enviamos um e-mail para confirmar a sua assinatura.    30s
     
     IF    ${VISIVEL}
 

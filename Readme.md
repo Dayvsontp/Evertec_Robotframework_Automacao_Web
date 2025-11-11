@@ -12,16 +12,20 @@ Repositório do projeto de testes automatizados Web do blog do Agi " https://blo
 - Allure 2.35.1
 - Github Actions
 
-## 🤖 Como executar
+## 🤖 Como executar (com os requisitos acima)
 
-1. Clonar o repositório ou fork, instalar o arquivo requirements(existente na raiz do projeto)
+1. Clonar o repositório ou fork, instalar o arquivo requirements(existente na raiz do projeto) e instale o python add no path
 ```
 pip install -r requirements.txt 
 ```
 
-2. Executar testes em Headless
+2. Executar testes em Headless no Github Actions
 ```
 Existem três gatilhos no arquivo TestRobot.yml, onde pode disparar com ou sem alterações no projeto
+```
+Execuçao local
+```
+robot nome_do_arquivo.robot
 ```
 
 3. Visualizar o relatório dos testes

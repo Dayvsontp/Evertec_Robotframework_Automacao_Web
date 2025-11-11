@@ -20,9 +20,9 @@ pip install -r requirements.txt
 ```
 
 2. Executar testes em Headless no Github Actions
-```
+
 Existem três gatilhos no arquivo TestRobot.yml, onde pode disparar com ou sem alterações no projeto
-```
+
 Execuçao local
 ```
 robot REALIZAR_CONSULTA_DE_SEGUROS_NO_BLOG.robot

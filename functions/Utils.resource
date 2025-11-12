@@ -17,7 +17,7 @@ Limpar Cache E Cookies
     Execute JavaScript    window.caches.keys().then(keys => {keys.forEach(key => caches.delete(key));});
 
 Abrir Navegador
-    [Arguments]    ${url}=${google}    ${navegador}=headlesschrome
+    [Arguments]    ${url}=${google}    ${navegador}=chrome
     Open Browser    ${url}    ${navegador}  
     Limpar Cache E Cookies  
     Maximizar Tela

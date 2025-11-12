@@ -99,12 +99,7 @@ jobs:
           pip install robotframework-requests
           pip install robotframework-faker
           pip install allure-robotframework
-          # instala o CLI do allure (necessário pra gerar o HTML)
-          sudo apt-get install -y openjdk-11-jre
-          wget https://github.com/allure-framework/allure2/releases/latest/download/allure-2.29.0.tgz
-          tar -zxvf allure-2.29.0.tgz
-          sudo mv allure-2.29.0 /opt/allure
-          sudo ln -s /opt/allure/bin/allure /usr/bin/allure
+          pip install allure-commandline  # ✅ instala o CLI do allure
 
       - name: Run Robot Framework tests
         continue-on-error: false

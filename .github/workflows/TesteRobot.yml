@@ -50,3 +50,13 @@ jobs:
         with:
           name: allure-results
           path: allure-results/
+
+      - name: Publicar Allure Report online (GitHub Pages)
+        uses: peaceiris/actions-gh-pages@v4
+        if: always() # Roda mesmo se os testes falharem
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          # A pasta 'allure-report' é onde a ação anterior gera o site estático
+          publish_dir: allure-report
+          # Define a branch de destino como 'gh-pages' ou 'main/docs'
+          publish_branch: gh-pages

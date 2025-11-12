@@ -41,9 +41,18 @@ robot REALIZAR_CONSULTA_DE_SEGUROS_NO_BLOG.robot
  Depois valida a execução e relatorios.
 
  OBS: é necessario realizar a instalação do allure na maquina local, pois na CLI não possivel visualizar
-
-e ai dando o comando "allure serve ." dentro da pasta que foi extraido o arquivo .zip é possivel visuali-
+ Entre no powerShell como adm e execute:
+ ```
+scoop install allure
+ ```
+ Depois dando o comando "allure serve ." dentro da pasta que foi extraido o arquivo .zip é possivel visuali-
 zar os resultados dos testes e o tratamento de erro feito em caso de instabilidade do sistema
+ ```
+allure serve .
+ ```
+
+
+
 
 
 <hr>

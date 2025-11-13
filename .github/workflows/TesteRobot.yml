@@ -1,4 +1,4 @@
-name: Run Robot Framework Tests with Allure
+name: Run Robot Framework Tests with Allure (Multi-OS)
 
 on:
   push:
@@ -9,20 +9,28 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # 1. Define a estratégia de matriz para rodar em diferentes SOs
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    # 2. Usa o SO da matriz para o runner
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install Xvfb
+      # 3. Instala o Xvfb SOMENTE no Linux (Ubuntu)
+      - name: Install Xvfb (Linux only for Headless Browser)
+        if: runner.os == 'Linux' # Esta condição garante que só roda no Linux
         run: |
-         sudo apt-get update
-         sudo apt-get install -y xvfb
-         Xvfb :99 -ac -screen 0 1920x1080x24 &
-         echo "DISPLAY=:99" >> $GITHUB_ENV  
-
-      - name: Set up Python 3.11
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          Xvfb :99 -ac -screen 0 1920x1080x24 &
+          echo "DISPLAY=:99" >> $GITHUB_ENV
+          
+      - name: Set up Python 3.11 on ${{ matrix.os }}
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -36,29 +44,29 @@ jobs:
           pip install robotframework-faker
           pip install allure-robotframework
 
-      
+      # O comando de execução dos testes é o mesmo em todos os sistemas
       - name: Run Robot Framework tests
         continue-on-error: false
         run: |
-          mkdir -p allure-results # Garante que a pasta exista antes de rodar os testes
+          # O comando 'mkdir' é compatível com Linux, macOS e Windows (via Git Bash/PowerShell)
+          mkdir -p allure-results
           python -m robot --listener allure_robotframework:allure-results scripts/
-          
 
+      # 4. Upload dos resultados para todos os jobs
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-results
+          name: allure-results-${{ matrix.os }}
           path: allure-results/
 
-      - name: Publicar Allure Report online (GitHub Pages)
+      # 5. Publicar Allure Report online (GitHub Pages)
+      # Nota: Este passo rodará para CADA SO da matriz.
+      # Se você quiser que rode apenas uma vez, deve rodar em um job separado que dependa do job 'test'.
+      - name: Publicar Allure Report online
         uses: peaceiris/actions-gh-pages@v4
-        if: always() # Roda mesmo se os testes falharem
+        if: always() && matrix.os == 'ubuntu-latest' # Adicionei uma condição para rodar o deploy APENAS no Ubuntu
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # A pasta 'allure-report' é onde a ação anterior gera o site estático
           publish_dir: allure-report
-          # Define a branch de destino como 'gh-pages' ou 'main/docs'
           publish_branch: gh-pages
-
-
